@@ -20,9 +20,21 @@ namespace LoadingScreen.Installer
         public void LoadMainMenu()
         {
             LoadingScreenConfig config = _configsContainer.GetConfig("MainMenu");
-            LoadingScreenTemplate screen = _screenFactory.GetScreen<LoadingScreenTemplate>();
-            _current = new BaseLoadingScreen();
-            _current.Init(screen, config);
+            CreateBasic(config);
+        }
+
+        public void LoadGameplay()
+        {
+            LoadingScreenConfig config = _configsContainer.GetConfig("Gameplay");
+            CreateBasic(config);
+        }
+
+        private void CreateBasic(LoadingScreenConfig config)
+        {
+            DefaultLoadingScreenTemlate screen = _screenFactory.GetScreen<DefaultLoadingScreenTemlate>();
+            var loadModel = new BaseLoadingScreenModel();
+            loadModel.Init(screen, config);
+            _current = loadModel;
             _current.OnLoadingFinished += Dispose;
         }
 

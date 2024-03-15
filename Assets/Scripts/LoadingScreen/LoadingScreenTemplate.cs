@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace LoadingScreen
 {
-    public class LoadingScreenTemplate : MonoBehaviour, IScreenTemplate
+    public abstract class LoadingScreenTemplate : MonoBehaviour, IScreenTemplate
     {
         [SerializeField] private Image _fillLoading;
         [SerializeField] private Image _main;

@@ -6,7 +6,12 @@ namespace LoadingScreen.Model
     public interface ILoadingScreen
     {
         public event Action OnLoadingFinished;
-        public void Init(LoadingScreenTemplate template, LoadingScreenConfig config);
         public void Dispose();
+
+    }
+
+    public interface IDefaultLoadingScreen : ILoadingScreen
+    {
+        public void Init(DefaultLoadingScreenTemlate template, LoadingScreenConfig config);
     }
 }

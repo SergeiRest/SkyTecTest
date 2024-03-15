@@ -6,17 +6,17 @@ using Object = UnityEngine.Object;
 
 namespace LoadingScreen.Model
 {
-    public class BaseLoadingScreen : ILoadingScreen
+    public class BaseLoadingScreenModel : IDefaultLoadingScreen
     {
-        private LoadingScreenTemplate _screen;
+        private DefaultLoadingScreenTemlate _screen;
         private LoadingInformation[] _information;
 
         private int _step = 0;
         private float progress = 0;
-        
+
         public event Action OnLoadingFinished;
 
-        public void Init(LoadingScreenTemplate template, LoadingScreenConfig config)
+        public void Init(DefaultLoadingScreenTemlate template, LoadingScreenConfig config)
         {
             _screen = template;
             _information = config.LoadingInformation;

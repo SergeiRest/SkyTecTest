@@ -7,5 +7,6 @@ namespace LoadingScreen
     public interface IScreenTemplate
     {
         public void UpdateProgress(float value);
+        public void UpdateDescription(string value);
     }
 }
