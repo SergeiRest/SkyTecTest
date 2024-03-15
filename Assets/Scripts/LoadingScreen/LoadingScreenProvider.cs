@@ -1,12 +1,16 @@
 ﻿using LoadingScreen.Config;
 using LoadingScreen.Factory;
 using LoadingScreen.Model;
+using TicTacToe;
 using UnityEngine;
+using Zenject;
 
 namespace LoadingScreen.Installer
 {
     public class LoadingScreenProvider
     {
+        [Inject] private GameInitializer _gameInitializer;
+        
         private IScreenFactory _screenFactory;
         private ConfigsContainer _configsContainer;
         private ILoadingScreen _current;
@@ -26,14 +30,14 @@ namespace LoadingScreen.Installer
         public void LoadGameplay()
         {
             LoadingScreenConfig config = _configsContainer.GetConfig("Gameplay");
+            _gameInitializer.Initialize();
             CreateBasic(config);
         }
 
         private void CreateBasic(LoadingScreenConfig config)
         {
             DefaultLoadingScreenTemlate screen = _screenFactory.GetScreen<DefaultLoadingScreenTemlate>();
-            var loadModel = new BaseLoadingScreenModel();
-            loadModel.Init(screen, config);
+            var loadModel = new BaseLoadingScreenModel(screen, config);
             _current = loadModel;
             _current.OnLoadingFinished += Dispose;
         }

@@ -9,9 +9,4 @@ namespace LoadingScreen.Model
         public void Dispose();
 
     }
-
-    public interface IDefaultLoadingScreen : ILoadingScreen
-    {
-        public void Init(DefaultLoadingScreenTemlate template, LoadingScreenConfig config);
-    }
 }
