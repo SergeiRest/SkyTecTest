@@ -15,10 +15,10 @@ MonoBehaviour:
   Main: {fileID: 21300000, guid: 2b49e7fa07a2bbd43943c3497370bce9, type: 3}
   <LoadingInformation>k__BackingField:
   - <Description>k__BackingField: Loading Assets
-    <Time>k__BackingField: 1
+    <Time>k__BackingField: 0.25
   - <Description>k__BackingField: Loading Interfaces
-    <Time>k__BackingField: 1
+    <Time>k__BackingField: 0.25
   - <Description>k__BackingField: Prepairing To Launch
-    <Time>k__BackingField: 1
+    <Time>k__BackingField: 0.25
   - <Description>k__BackingField: Finish Loading
-    <Time>k__BackingField: 1
+    <Time>k__BackingField: 0.25
