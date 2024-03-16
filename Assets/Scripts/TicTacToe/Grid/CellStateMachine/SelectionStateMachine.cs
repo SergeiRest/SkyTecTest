@@ -30,5 +30,8 @@ namespace TicTacToe.Grid.CellStateMachine
         {
             currentState.Select();
         }
+
+        public bool IsActive() => 
+            currentState.GetType() != typeof(InactiveState);
     }
 }

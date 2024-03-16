@@ -12,16 +12,17 @@ namespace TicTacToe.Grid
         
         public void Create()
         {
-            List<ICell> cells = new List<ICell>();
             Grid grid = new Grid();
+            _diContainer.BindInterfacesAndSelfTo<Grid>().FromInstance(grid).AsSingle();
+
+            List<ICell> cells = new List<ICell>();
             GridTemplate gridTemplate = Object.Instantiate(_gridConfig.GridTemplate);
 
-            _diContainer.BindInterfacesAndSelfTo<Grid>().FromInstance(grid).AsSingle().NonLazy();
             
             for (int i = 0; i < grid.CellsCount; i++)
             {
-                ICell cell = new BasicCell();
-                CellTemplate monoCell = Object.Instantiate(_gridConfig.CellTemplate, gridTemplate.CellParent, true);
+                CellTemplate monoCell = _diContainer.InstantiatePrefabForComponent<CellTemplate>(_gridConfig.CellTemplate, gridTemplate.CellParent);
+                ICell cell = new BasicCell(monoCell.Main);
                 monoCell.Init(cell);
                 cells.Add(cell);
             }

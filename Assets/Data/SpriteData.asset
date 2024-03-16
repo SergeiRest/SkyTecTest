@@ -17,3 +17,7 @@ MonoBehaviour:
     Sprite: {fileID: 21300000, guid: 7bd0cbe723e91264289d42576f281579, type: 3}
   - Key: silver
     Sprite: {fileID: 21300000, guid: ea43b907ed4912f4092b70f8da1ae0b0, type: 3}
+  - Key: TAC-toe
+    Sprite: {fileID: -1017655591, guid: 65e199696c5cc6b4085501dbff993bb3, type: 3}
+  - Key: Cross
+    Sprite: {fileID: 957906130, guid: 65e199696c5cc6b4085501dbff993bb3, type: 3}

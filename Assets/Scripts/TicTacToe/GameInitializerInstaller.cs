@@ -1,4 +1,5 @@
-﻿using TicTacToe.Grid;
+﻿using LoadingScreen;
+using TicTacToe.Grid;
 using UnityEngine;
 using Zenject;
 
@@ -11,6 +12,7 @@ namespace TicTacToe
         {
             Container.BindInterfacesAndSelfTo<GridConfig>().FromInstance(_gridConfig).AsSingle();
             Container.BindInterfacesAndSelfTo<GameInitializer>().FromNew().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<SelectionChecker>().FromNew().AsSingle().NonLazy();
         }
     }
 }

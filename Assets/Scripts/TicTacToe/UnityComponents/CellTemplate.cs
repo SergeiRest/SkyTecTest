@@ -1,12 +1,17 @@
 ﻿using TicTacToe.Grid;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using Zenject;
 
 namespace TicTacToe.UnityComponents
 {
     public class CellTemplate : MonoBehaviour, IPointerDownHandler
     {
+        [Inject] private SelectionChecker _selectionChecker;
         private ICell _cell;
+
+        [field: SerializeField] public Image Main; 
         
         public void Init(ICell cell)
         {
@@ -15,7 +20,7 @@ namespace TicTacToe.UnityComponents
         
         public void OnPointerDown(PointerEventData eventData)
         {
-            _cell.Select();
+            _selectionChecker.Check(_cell, typeof(PlayerTurn));
         }
     }
 }

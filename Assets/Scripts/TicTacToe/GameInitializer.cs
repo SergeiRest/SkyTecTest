@@ -7,6 +7,8 @@ namespace TicTacToe
     {
         private GridFactory _gridFactory;
 
+        [Inject] private SelectionChecker _selectionChecker;
+
         [Inject]
         private void Construct(DiContainer diContainer)
         {
@@ -17,6 +19,7 @@ namespace TicTacToe
         public void Initialize()
         {
             _gridFactory.Create();
+            _selectionChecker.Initialize();
         }
     }
 }
