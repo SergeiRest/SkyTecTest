@@ -14,6 +14,7 @@ namespace DefaultNamespace.DialogueWindow
         public T Get<T>() where T : AbstractDialogueWindow
         {
             T prefab = Resources.LoadAll<T>(_path).First();
+            Debug.Log(prefab.gameObject.name);
             T model = _diContainer.InstantiatePrefabForComponent<T>(prefab);
             return prefab;
         }

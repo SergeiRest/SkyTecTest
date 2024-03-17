@@ -7,7 +7,7 @@ using Zenject;
 
 namespace DefaultNamespace.DialogueWindow
 {
-    public class SelectDifficultyWindow : AbstractDialogueWindow
+    public class TestWindow : AbstractDialogueWindow
     {
         [SerializeField] private TextMeshProUGUI _description;
         [SerializeField] private Button _interaction;

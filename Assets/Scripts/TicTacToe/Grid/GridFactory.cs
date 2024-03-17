@@ -25,9 +25,8 @@ namespace TicTacToe.Grid
             }
 
             List<ICell> cells = new List<ICell>();
-            GridTemplate gridTemplate = Object.Instantiate(_gridConfig.GridTemplate);
+            GridTemplate gridTemplate = _diContainer.InstantiatePrefabForComponent<GridTemplate>(_gridConfig.GridTemplate);
 
-            
             for (int i = 0; i < _grid.CellsCount; i++)
             {
                 CellTemplate monoCell = _diContainer.InstantiatePrefabForComponent<CellTemplate>(_gridConfig.CellTemplate, gridTemplate.CellParent);

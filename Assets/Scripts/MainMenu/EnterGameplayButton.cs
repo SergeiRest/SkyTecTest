@@ -12,7 +12,7 @@ namespace MainMenu
         [Inject]
         private void Construct(DialogueWindowPresenter windowPresenter)
         {
-            _button.onClick.AddListener(windowPresenter.Show<SelectDifficultyWindow>);
+            _button.onClick.AddListener(windowPresenter.Show<TestWindow>);
         }
     }
 }
