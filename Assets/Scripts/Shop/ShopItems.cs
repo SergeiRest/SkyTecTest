@@ -18,7 +18,7 @@ namespace Shop
             {
                 if (i is ValuableShopItem item)
                 {
-                    Debug.Log(item.amount);
+//                    Debug.Log(item.amount);
                 }
             }
         }
