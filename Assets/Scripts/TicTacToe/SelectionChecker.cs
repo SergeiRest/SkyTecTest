@@ -43,7 +43,7 @@ namespace TicTacToe
 
         public void Check(ICell cell, Type from)
         {
-            if(from != current.GetType() && current == null)
+            if(current == null || from != current.GetType())
                 return;
             
             cell.Select(current.Pick);

@@ -1,4 +1,4 @@
-﻿using LoadingScreen.Installer;
+﻿using DefaultNamespace.DialogueWindow;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -10,9 +10,10 @@ namespace MainMenu
         [SerializeField] private Button _button;
 
         [Inject]
-        private void Construct(LoadingScreenProvider provider)
+        private void Construct(DialogueWindowPresenter windowPresenter)
         {
-            _button.onClick.AddListener(provider.LoadGameplay);
+            //_button.onClick.AddListener(provider.LoadGameplay);
+            _button.onClick.AddListener(windowPresenter.Show<SelectDifficultyWindow>);
         }
     }
 }
