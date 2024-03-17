@@ -7,8 +7,18 @@ namespace TicTacToe
 {
     public class BotTurn : ITurn
     {
-        [Inject] private Grid.Grid _grid;
-        [Inject] private SelectionChecker _checker;
+        private Grid.Grid _grid;
+        private SelectionChecker _checker;
+
+        [Inject]
+        private void Construct(Grid.Grid grid, SelectionChecker checker)
+        {
+            _grid = null;
+            _checker = null;
+
+            _grid = grid;
+            _checker = checker;
+        }
 
         private Pick _pick = Pick.Bot;
         

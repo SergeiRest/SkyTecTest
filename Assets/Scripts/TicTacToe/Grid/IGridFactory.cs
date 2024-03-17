@@ -3,5 +3,6 @@
     public interface IGridFactory
     {
         void Create();
+        void Clear();
     }
 }

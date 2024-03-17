@@ -15,8 +15,9 @@ namespace TicTacToe.Grid
 
         public int CellsCount { get; private set; } = 9;
 
-        public void SetCells(ICell[] cells)
+        public void Init(GridTemplate gridTemplate, ICell[] cells)
         {
+            _view = gridTemplate;
             _cells = cells;
         }
 

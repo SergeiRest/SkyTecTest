@@ -12,7 +12,6 @@ namespace MainMenu
         [Inject]
         private void Construct(DialogueWindowPresenter windowPresenter)
         {
-            //_button.onClick.AddListener(provider.LoadGameplay);
             _button.onClick.AddListener(windowPresenter.Show<SelectDifficultyWindow>);
         }
     }

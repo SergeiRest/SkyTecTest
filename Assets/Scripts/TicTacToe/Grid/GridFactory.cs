@@ -9,17 +9,26 @@ namespace TicTacToe.Grid
     {
         [Inject] private GridConfig _gridConfig;
         [Inject] private DiContainer _diContainer;
+
+        private Grid _grid;
         
         public void Create()
         {
-            Grid grid = new Grid();
-            _diContainer.BindInterfacesAndSelfTo<Grid>().FromInstance(grid).AsSingle();
+            _grid = new Grid();
+            if (!_diContainer.HasBinding<Grid>())
+            {
+                _diContainer.BindInterfacesAndSelfTo<Grid>().FromInstance(_grid).AsSingle();
+            }
+            else
+            {
+                _diContainer.Rebind<Grid>().FromInstance(_grid);
+            }
 
             List<ICell> cells = new List<ICell>();
             GridTemplate gridTemplate = Object.Instantiate(_gridConfig.GridTemplate);
 
             
-            for (int i = 0; i < grid.CellsCount; i++)
+            for (int i = 0; i < _grid.CellsCount; i++)
             {
                 CellTemplate monoCell = _diContainer.InstantiatePrefabForComponent<CellTemplate>(_gridConfig.CellTemplate, gridTemplate.CellParent);
                 ICell cell = new BasicCell(monoCell.Main);
@@ -27,7 +36,13 @@ namespace TicTacToe.Grid
                 cells.Add(cell);
             }
             
-            grid.SetCells(cells.ToArray());
+            _grid.Init(gridTemplate, cells.ToArray());
+            cells.Clear();
+        }
+
+        public void Clear()
+        {
+            _grid.Dispose();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace TicTacToe.Grid.CellStateMachine
+﻿using UnityEngine;
+
+namespace TicTacToe.Grid.CellStateMachine
 {
     public class InactiveState : CellSelectionState
     {
@@ -8,7 +10,6 @@
 
         public override void Select()
         {
-            
         }
     }
 }

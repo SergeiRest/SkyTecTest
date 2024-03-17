@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
+using DefaultNamespace.DialogueWindow;
 using LoadingScreen;
 using TicTacToe.Grid;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace TicTacToe
     {
         [Inject] private DiContainer _diContainer;
         [Inject] private SpriteData _spriteData;
+        [Inject] private DialogueWindowPresenter _dialogueWindowPresenter;
         
         private Dictionary<Type, ITurn> _turns = new Dictionary<Type, ITurn>();
         private ITurn current;
@@ -28,7 +30,7 @@ namespace TicTacToe
             _turns.Add(player.GetType(), player);
             _turns.Add(bot.GetType(), bot);
 
-            current = player;
+            //current = player;
         }
 
         public void Initialize()
@@ -39,11 +41,18 @@ namespace TicTacToe
             }
             
             _diContainer.Inject(_gridCalculator);
+            if(_turns.TryGetValue(typeof(PlayerTurn), out var newTurn))
+            {
+                current = newTurn;
+            }
         }
 
         public void Check(ICell cell, Type from)
         {
             if(current == null || from != current.GetType())
+                return;
+            
+            if(cell.Picked != Pick.None)
                 return;
             
             cell.Select(current.Pick);
@@ -55,6 +64,15 @@ namespace TicTacToe
             }
             else
             {
+                switch (current.Pick)
+                {
+                    case Pick.Bot:
+                        _dialogueWindowPresenter.Show<LoseWindow>();
+                        break;
+                    case Pick.Player:
+                        _dialogueWindowPresenter.Show<WinWindow>();
+                        break;
+                }
                 current = null;
             }
         }

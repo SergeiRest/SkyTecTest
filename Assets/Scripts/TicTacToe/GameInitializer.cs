@@ -21,5 +21,10 @@ namespace TicTacToe
             _gridFactory.Create();
             _selectionChecker.Initialize();
         }
+        
+        public void Dispose()
+        {
+            _gridFactory.Clear();
+        }
     }
 }
