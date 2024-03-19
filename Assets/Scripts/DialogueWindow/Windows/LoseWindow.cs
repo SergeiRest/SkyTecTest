@@ -1,24 +1,16 @@
-﻿using LoadingScreen.Installer;
+﻿using DefaultNamespace.Player;
+using LoadingScreen.Installer;
 using TicTacToe;
-using UnityEngine;
-using UnityEngine.UI;
-using Zenject;
 
-namespace DefaultNamespace.DialogueWindow
+namespace DialogueWindow
 {
-    public class LoseWindow : AbstractDialogueWindow
+    public class LoseWindow : FinishGameWindow
     {
-        [SerializeField] private Button _continue;
-        
-        [Inject]
-        private void Construct(GameInitializer gameInitializer, LoadingScreenProvider loadingProvider)
+        public override void Construct(GameInitializer gameInitializer, LoadingScreenProvider loadingProvider, Player player)
         {
-            _continue.onClick.AddListener(() =>
-            {
-                loadingProvider.LoadMainMenu();
-                gameInitializer.Dispose();
-                Destroy(gameObject);
-            });
+            base.Construct(gameInitializer, loadingProvider, player);
+            _scoreAnimation.Animate(player.Score.Score, player.Score.Score - 100, UpdateScore, ShowButton);
+            player.Score.Decrease(100);
         }
     }
 }

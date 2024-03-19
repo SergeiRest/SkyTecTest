@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace DefaultNamespace.DialogueWindow
+namespace DialogueWindow
 {
     public class DialogueWindowInstaller : MonoInstaller
     {

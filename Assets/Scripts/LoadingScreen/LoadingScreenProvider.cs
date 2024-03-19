@@ -10,6 +10,7 @@ namespace LoadingScreen.Installer
     public class LoadingScreenProvider
     {
         [Inject] private GameInitializer _gameInitializer;
+        [Inject] private DiContainer _diContainer;
         
         private IScreenFactory _screenFactory;
         private ConfigsContainer _configsContainer;
@@ -24,20 +25,22 @@ namespace LoadingScreen.Installer
         public void LoadMainMenu()
         {
             LoadingScreenConfig config = _configsContainer.GetConfig("MainMenu");
-            CreateBasic(config);
+            CreateBasic<GameplayToMenuModel>(config);
         }
 
         public void LoadGameplay()
         {
             LoadingScreenConfig config = _configsContainer.GetConfig("Gameplay");
             _gameInitializer.Initialize();
-            CreateBasic(config);
+            CreateBasic<MenuToGameplayModel>(config);
         }
 
-        private void CreateBasic(LoadingScreenConfig config)
+        private void CreateBasic<T>(LoadingScreenConfig config) where T : BaseLoadingScreenModel, new()
         {
-            DefaultLoadingScreenTemlate screen = _screenFactory.GetScreen<DefaultLoadingScreenTemlate>();
-            var loadModel = new BaseLoadingScreenModel(screen, config);
+            DefaultLoadingScreenTemplate screen = _screenFactory.GetScreen<DefaultLoadingScreenTemplate>();
+            var loadModel = new T();
+            _diContainer.Inject(loadModel);
+            loadModel.Init(screen, config);
             _current = loadModel;
             _current.OnLoadingFinished += Dispose;
         }

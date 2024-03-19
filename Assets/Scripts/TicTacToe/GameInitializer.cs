@@ -1,4 +1,6 @@
-﻿using TicTacToe.Grid;
+﻿using PlayerInput;
+using TicTacToe.Grid;
+using TicTacToe.Timer;
 using Zenject;
 
 namespace TicTacToe
@@ -8,6 +10,7 @@ namespace TicTacToe
         private GridFactory _gridFactory;
 
         [Inject] private SelectionChecker _selectionChecker;
+        [Inject] private RoundTimer _timer;
 
         [Inject]
         private void Construct(DiContainer diContainer)
@@ -25,6 +28,7 @@ namespace TicTacToe
         public void Dispose()
         {
             _gridFactory.Clear();
+            _timer.Stop();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace LoadingScreen.Model
 {
     public class BaseLoadingScreenModel : ILoadingScreen
     {
-        private DefaultLoadingScreenTemlate _screen;
+        private DefaultLoadingScreenTemplate _screen;
         private LoadingInformation[] _information;
 
         private int _step = 0;
@@ -16,7 +16,7 @@ namespace LoadingScreen.Model
 
         public event Action OnLoadingFinished;
 
-        public BaseLoadingScreenModel(DefaultLoadingScreenTemlate template, LoadingScreenConfig config)
+        public virtual void Init(DefaultLoadingScreenTemplate template, LoadingScreenConfig config)
         {
             _screen = template;
             _information = config.LoadingInformation;
@@ -25,7 +25,7 @@ namespace LoadingScreen.Model
             StartLoading();
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             OnLoadingFinished = null;
             Object.Destroy(_screen.gameObject);

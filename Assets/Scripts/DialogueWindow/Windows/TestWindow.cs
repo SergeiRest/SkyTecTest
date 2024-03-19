@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace DefaultNamespace.DialogueWindow
+namespace DialogueWindow
 {
     public class TestWindow : AbstractDialogueWindow
     {

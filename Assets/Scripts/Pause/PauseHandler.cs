@@ -1,4 +1,4 @@
-﻿using DefaultNamespace.DialogueWindow;
+﻿using DialogueWindow;
 using UnityEngine;
 using Zenject;
 
@@ -10,9 +10,8 @@ namespace Pause
 
         public void Pause()
         {
-            Debug.Log("Pause");
             _dialogueWindowPresenter.Show<PauseWindow>();
-            //Time.timeScale = 0;
+            Time.timeScale = 0;
         } 
         public void Unpause() => Time.timeScale = 1;
     }

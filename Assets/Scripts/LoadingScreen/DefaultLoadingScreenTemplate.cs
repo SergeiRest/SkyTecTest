@@ -2,7 +2,7 @@
 
 namespace LoadingScreen
 {
-    public class DefaultLoadingScreenTemlate : LoadingScreenTemplate
+    public class DefaultLoadingScreenTemplate : LoadingScreenTemplate
     {
         public void Construct(Sprite sprite, string aboba)
         {

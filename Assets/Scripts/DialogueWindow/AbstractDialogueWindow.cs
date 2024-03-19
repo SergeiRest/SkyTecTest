@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace.DialogueWindow
+namespace DialogueWindow
 {
     public abstract class AbstractDialogueWindow : MonoBehaviour, IDialogueWindow
     {

@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace DefaultNamespace.DialogueWindow
+namespace DialogueWindow
 {
     public class DialogueWindowFactory
     {
@@ -11,12 +11,10 @@ namespace DefaultNamespace.DialogueWindow
         private string _path = "DialogueWindows";
 
 
-        public T Get<T>() where T : AbstractDialogueWindow
+        public void Get<T>() where T : AbstractDialogueWindow
         {
             T prefab = Resources.LoadAll<T>(_path).First();
-            Debug.Log(prefab.gameObject.name);
             T model = _diContainer.InstantiatePrefabForComponent<T>(prefab);
-            return prefab;
         }
     }
 }

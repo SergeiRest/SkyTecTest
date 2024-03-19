@@ -1,4 +1,4 @@
-﻿using DefaultNamespace.DialogueWindow;
+﻿using DialogueWindow;
 using UnityEngine;
 
 namespace DialogueWindow.Configs
